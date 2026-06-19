@@ -25,6 +25,8 @@ Useful commands:
 .\v2\audit-allods-workspace.ps1
 .\v2\search-v2.ps1 "LabMap" -Scope Addons
 .\v2\build-addon-pak.ps1 -ProjectPath .\projects\AutoVendorHelper_v1
+.\v2\search-v2.ps1 "Quest" -Scope Runtime
+.\v2\search-v2.ps1 "Button" -Scope Examples
 ```
 
 Expected output:

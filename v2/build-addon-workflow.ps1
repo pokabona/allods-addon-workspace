@@ -18,7 +18,8 @@ $outputPak = Join-Path $addonsPath $pakName
 $build = & (Join-Path $PSScriptRoot 'build-addon-pak.ps1') `
     -ProjectPath $resolvedProject `
     -OutputPath $outputPak `
-    -Overwrite:$Overwrite
+    -Overwrite:$Overwrite `
+    -SkipIndexUpdateWarning
 
 & (Join-Path $PSScriptRoot 'update-addons-knowledge.ps1') -AddonsPath $addonsPath
 & (Join-Path $PSScriptRoot 'check-addons-freshness.ps1') -AddonsPath $addonsPath
@@ -36,4 +37,3 @@ if ($InstallToGame) {
     Installed = [bool] $InstallToGame
     InstallTarget = if ($install) { $install.Target } else { $null }
 }
-

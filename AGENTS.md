@@ -19,12 +19,15 @@ reports. Use `v2\resolve-allods-workspace.ps1` when a script or agent needs to
 print the concrete path for the current machine.
 Source projects should live under `projects\<AddonName>`. Ready/current PAK
 files live under `адоны`.
+Human reconnaissance and investigation notes live under `notes/`; treat them as
+context, not generated truth.
 
 ## First Places To Check
 
 - Read `v2/README.txt` before changing documentation or addon inventories.
 - Use `v2/search-v2.ps1` for focused lookup instead of loading the large JSON
-  files directly.
+  files directly. Its scopes cover `Api`, `Runtime`, `Examples`, `Addons`,
+  `History`, or `All`.
 - Treat `адоны/*.pak` as the authoritative source for current addon package
   contents.
 - Treat `v2/allods_addons_knowledge.json` as a generated searchable snapshot

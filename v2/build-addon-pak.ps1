@@ -6,7 +6,9 @@ param(
 
     [switch] $ToAddonsFolder,
 
-    [switch] $Overwrite
+    [switch] $Overwrite,
+
+    [switch] $SkipIndexUpdateWarning
 )
 
 $ErrorActionPreference = 'Stop'
@@ -14,14 +16,50 @@ $ErrorActionPreference = 'Stop'
 $workspaceRoot = Split-Path -Parent $PSScriptRoot
 $resolvedProject = (Resolve-Path -LiteralPath $ProjectPath).Path
 $modsPath = Join-Path $resolvedProject 'Mods'
+$modsAddonsPath = Join-Path $modsPath 'Addons'
 
 if (-not (Test-Path -LiteralPath $modsPath -PathType Container)) {
     throw "Project does not contain Mods folder: $resolvedProject"
 }
 
-$addonDesc = @(Get-ChildItem -LiteralPath $modsPath -Recurse -File -Filter 'AddonDesc.(UIAddon).xdb')
+if (-not (Test-Path -LiteralPath $modsAddonsPath -PathType Container)) {
+    throw "Project does not contain Mods/Addons folder: $resolvedProject"
+}
+
+$addonFolders = @(Get-ChildItem -LiteralPath $modsAddonsPath -Directory -ErrorAction SilentlyContinue)
+if ($addonFolders.Count -eq 0) {
+    throw "Project contains Mods/Addons but no internal addon folders: $modsAddonsPath"
+}
+
+$addonDesc = @(Get-ChildItem -LiteralPath $modsAddonsPath -Recurse -File -Filter 'AddonDesc.(UIAddon).xdb')
 if ($addonDesc.Count -eq 0) {
-    throw "No AddonDesc.(UIAddon).xdb found under: $modsPath"
+    throw "No AddonDesc.(UIAddon).xdb found under: $modsAddonsPath"
+}
+
+$foldersWithoutDesc = @(
+    $addonFolders |
+        Where-Object {
+            -not (Test-Path -LiteralPath (Join-Path $_.FullName 'AddonDesc.(UIAddon).xdb') -PathType Leaf)
+        } |
+        ForEach-Object Name
+)
+if ($foldersWithoutDesc.Count -gt 0) {
+    Write-Warning "Internal addon folders without root AddonDesc.(UIAddon).xdb: $($foldersWithoutDesc -join ', ')"
+}
+
+$foldersWithoutScripts = @(
+    $addonFolders |
+        Where-Object {
+            -not (Test-Path -LiteralPath (Join-Path $_.FullName 'Scripts') -PathType Container)
+        } |
+        ForEach-Object Name
+)
+if ($foldersWithoutScripts.Count -gt 0) {
+    Write-Warning "Internal addon folders without Scripts folder: $($foldersWithoutScripts -join ', ')"
+}
+
+if (-not $SkipIndexUpdateWarning) {
+    Write-Warning "build-addon-pak.ps1 only builds a PAK. If this PAK is copied to the authoritative адоны folder, run build-addon-workflow.ps1 or update-addons-knowledge.ps1 plus check-addons-freshness.ps1."
 }
 
 if (-not $OutputPath) {
@@ -75,7 +113,7 @@ if ($badMethods.Count -gt 0) {
 }
 
 $internalAddons = @(
-    Get-ChildItem -LiteralPath (Join-Path $modsPath 'Addons') -Directory -ErrorAction SilentlyContinue |
+    Get-ChildItem -LiteralPath $modsAddonsPath -Directory -ErrorAction SilentlyContinue |
         ForEach-Object Name |
         Sort-Object
 )
@@ -86,4 +124,3 @@ $internalAddons = @(
     InternalAddons = $internalAddons
     EntryMethod = 'Store'
 }
-
