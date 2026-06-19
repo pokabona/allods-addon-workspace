@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<UIAddon>
+	<Name>AutoVendorHelper_v1</Name>
+	<AutoStart>true</AutoStart>
+	<ScriptFileRefs>
+		<Item href="Scripts/Main.lua" />
+	</ScriptFileRefs>
+</UIAddon>

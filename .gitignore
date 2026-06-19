@@ -1,0 +1,25 @@
+# OS/editor noise
+Thumbs.db
+Desktop.ini
+*.tmp
+*.bak
+*.log
+
+# Runtime logs copied from the game should go into notes/ or a dated capture
+# folder only when intentionally preserved.
+mods.txt
+
+# External/reference-heavy folders. Keep them in Google Drive, but out of the
+# local git status unless intentionally moved into a smaller tracked source set.
+_archive/
+ModdingDocuments/
+
+# Rebuildable search index. Source JSON and scripts remain visible.
+v2/allods_search_index.jsonl
+
+# Local build outputs from source folders. Current authoritative addon packages
+# live in адоны/ and are not ignored here.
+projects/**/*.pak
+
+# PowerShell transient files
+*.ps1xml.tmp

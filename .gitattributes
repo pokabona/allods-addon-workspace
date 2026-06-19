@@ -1,0 +1,14 @@
+*.pak binary
+*.bin binary
+*.tga binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.xdb text
+*.lua text
+*.ps1 text
+*.txt text
+*.md text
+*.json text
+*.jsonl text
+

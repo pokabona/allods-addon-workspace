@@ -1,0 +1,23 @@
+{
+  "files.associations": {
+    "*.xdb": "xml",
+    "*.lua": "lua",
+    "*.ps1": "powershell",
+    "*.pak": "binary"
+  },
+  "files.exclude": {
+    "**/.git": true
+  },
+  "search.exclude": {
+    "**/_archive": true,
+    "**/v2/allods_search_index.jsonl": true,
+    "**/v2/allods_api_core.json": true,
+    "**/v2/allods_addons_knowledge.json": true,
+    "**/v2/allods_examples_samples.json": true,
+    "**/v2/allods_history_changelog.json": true,
+    "**/v2/allods_runtime_knowledge.json": true,
+    "**/v2/allods_manifest_index.json": true
+  },
+  "powershell.cwd": "${workspaceFolder}",
+  "git.autofetch": false
+}
