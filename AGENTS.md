@@ -17,22 +17,33 @@ Treat the folder containing this `AGENTS.md` as `<AllodsWorkspace>`. Prefer
 paths relative to `<AllodsWorkspace>` in documentation, generated records, and
 reports. Use `v2\resolve-allods-workspace.ps1` when a script or agent needs to
 print the concrete path for the current machine.
-Source projects should live under `projects\<AddonName>`. Ready/current PAK
-files live under `адоны`.
+Source projects should live under `projects\<AddonName>`. The Google Drive
+`адоны` folder is the user's personal package archive.
+
+## User-Owned Addon Archive
+
+- Do not create, replace, move, or delete files in `<AllodsWorkspace>\адоны`
+  or the same Google Drive folder on another drive letter unless the user
+  explicitly asks for that exact folder to be changed.
+- Codex may freely test and swap addon PAKs only in the game addon folder:
+  `C:\VK Play\Аллоды Онлайн\data\Mods\Addons`.
+- When building experimental packages, use a temporary workspace/output folder
+  or install directly to the game addon folder. Keep Google Drive `адоны`
+  as read-only reference material by default.
 
 ## First Places To Check
 
 - Read `v2/README.txt` before changing documentation or addon inventories.
 - Use `v2/search-v2.ps1` for focused lookup instead of loading the large JSON
   files directly.
-- Treat `адоны/*.pak` as the authoritative source for current addon package
-  contents.
+- Treat `адоны/*.pak` as user-owned reference packages.
 - Treat `v2/allods_addons_knowledge.json` as a generated searchable snapshot
-  of the current `адоны` folder.
+  of that user-owned archive.
 
 ## Addon Inventory Rules
 
-- After adding, replacing, or removing files in `адоны`, run:
+- After the user explicitly asks to add, replace, or remove files in `адоны`,
+  run:
 
 ```powershell
 .\v2\update-addons-knowledge.ps1
@@ -90,14 +101,13 @@ files live under `адоны`.
 - Git is used for local change visibility. Do not stage or commit files unless
   the user explicitly asks. Generated JSON/index files may change after update
   scripts; report those changes clearly.
-- For source projects, use the shared pipeline scripts:
+- For source projects, use the shared pipeline scripts only when their target
+  folder matches the user's permission for the task:
   - `v2\build-addon-pak.ps1` builds a store-mode `.pak`.
-  - `v2\build-addon-workflow.ps1` builds into `адоны`, updates v2 records, and
-    checks freshness.
-  - `v2\install-addon-pak.ps1` copies a chosen `.pak` into the game folder only
-    when explicitly requested. Prefer `ALLODS_GAME_ADDONS_PATH` for the game
-    addon folder; the built-in `C:\VK Play\Аллоды Онлайн\data\Mods\Addons`
-    path is only a fallback.
+  - `v2\build-addon-workflow.ps1` builds into `адоны`; use it only when the
+    user explicitly allows changing the Google Drive archive.
+  - `v2\install-addon-pak.ps1` copies a chosen `.pak` into the game folder.
+    The game folder is Codex's addon testing area.
 
 ## Game Paths
 
