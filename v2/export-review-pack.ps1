@@ -1,5 +1,5 @@
 param(
-    [string] $OutputPath = (Join-Path (Get-Location) 'jules-allods-review-pack'),
+    [string] $OutputPath = (Join-Path (Get-Location) 'allods-review-pack'),
     [switch] $Overwrite
 )
 
@@ -42,7 +42,7 @@ $includeFiles = @(
     'v2/build-addon-pak.ps1',
     'v2/build-addon-workflow.ps1',
     'v2/check-addons-freshness.ps1',
-    'v2/export-jules-review-pack.ps1',
+    'v2/export-review-pack.ps1',
     'v2/install-addon-pak.ps1',
     'v2/resolve-allods-workspace.ps1',
     'v2/search-v2.ps1',
@@ -66,7 +66,7 @@ foreach ($directory in @('projects', 'notes')) {
 }
 
 $prompt = @'
-# Jules Review Prompt
+# External Review Prompt
 
 You are reviewing a clean export of an Allods Online addon workspace. Do not
 delete files or rewrite generated JSON. Treat this repository as a review pack,
@@ -103,16 +103,16 @@ Expected output:
 - If making code changes, keep them small and focused.
 '@
 
-Set-Content -LiteralPath (Join-Path $outputFullPath 'JULES_PROMPT.md') -Value $prompt -Encoding utf8
+Set-Content -LiteralPath (Join-Path $outputFullPath 'REVIEW_PROMPT.md') -Value $prompt -Encoding utf8
 
 $readme = @'
-# Allods Jules Review Pack
+# Allods Review Pack
 
-This is a clean review export for Google Jules or another cloud coding agent.
-It intentionally excludes `_archive/`, `ModdingDocuments/`, heavy generated
-search indexes, and live game folders.
+This is a clean review export for an external code reviewer or local coding
+agent. It intentionally excludes `_archive/`, `ModdingDocuments/`, heavy
+generated search indexes, and live game folders.
 
-Read `JULES_PROMPT.md` first.
+Read `REVIEW_PROMPT.md` first.
 
 This pack is safe to publish to a private GitHub repository for review. It is
 not the live workspace.
@@ -127,7 +127,7 @@ try {
     git config user.email 'codex-export@example.invalid'
     git config core.autocrlf false
     git add .
-    git commit -m "Prepare Allods review pack for Jules" | Out-Host
+    git commit -m "Prepare Allods review pack" | Out-Host
     if ($LASTEXITCODE -ne 0) {
         throw "git commit failed with exit code $LASTEXITCODE"
     }

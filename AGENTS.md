@@ -52,7 +52,7 @@ files live under `адоны`.
 - For audit requests, run `.\v2\audit-allods-workspace.ps1` first. Treat its
   duplicate and encoding findings as review signals, not as permission to
   delete or convert files automatically.
-- For external cloud-agent review, use `.\v2\export-jules-review-pack.ps1`
+- For external code review, use `.\v2\export-review-pack.ps1`
   and share the generated pack, not the full Google Drive workspace.
 
 ## API And Runtime Knowledge

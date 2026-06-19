@@ -250,12 +250,12 @@ Api, Runtime, Examples, Addons, History, All
 кандидатов Windows-1251 и отфильтрованные TODO/FIXME/BUG. Для проверки generated JSON добавить -IncludeGeneratedKnowledge. Для полного
 машиночитаемого отчёта использовать параметр -Json.
 
-Для внешнего ревью в Jules или другом облачном агенте создать чистый пакет:
+Для внешнего ревью или локального анализа создать чистый пакет:
 
-.\export-jules-review-pack.ps1 -OutputPath <куда-собрать>
+.\export-review-pack.ps1 -OutputPath <куда-собрать>
 
 Пакет исключает _archive, ModdingDocuments, тяжёлый search-index и живые
-игровые папки. Передавать Jules следует содержимое этого пакета, а не весь
+игровые папки. Передавать на ревью следует содержимое этого пакета, а не весь
 Google Drive workspace.
 
 После замены API- или runtime-документации выполнить:
