@@ -102,6 +102,10 @@ ModdingDocuments при разработке, проверке Lua, сборке
 
 .\install-addon-pak.ps1 -PakPath ..\адоны\AutoVendorHelper_v1.pak
 
+По умолчанию install-addon-pak.ps1 берёт путь игры из переменной окружения
+ALLODS_GAME_ADDONS_PATH. Если переменная не задана, используется запасной путь
+C:\VK Play\Аллоды Онлайн\data\Mods\Addons.
+
 Связь с папкой "адоны"
 ----------------------
 Соседняя папка:
@@ -243,7 +247,7 @@ Api, Runtime, Examples, Addons, History, All
 .\audit-allods-workspace.ps1
 
 Скрипт выводит группы полных дубликатов, пустые файлы, абсолютные пути,
-кандидатов Windows-1251 и отфильтрованные TODO/FIXME/BUG. Для полного
+кандидатов Windows-1251 и отфильтрованные TODO/FIXME/BUG. Для проверки generated JSON добавить -IncludeGeneratedKnowledge. Для полного
 машиночитаемого отчёта использовать параметр -Json.
 
 Для внешнего ревью в Jules или другом облачном агенте создать чистый пакет:

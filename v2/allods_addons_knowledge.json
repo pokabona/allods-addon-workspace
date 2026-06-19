@@ -1,7 +1,7 @@
 {
   "metadata": {
     "name": "allods_addons_knowledge",
-    "generated_at": "2026-06-19T10:39:43.1272778Z",
+    "generated_at": "2026-06-19T16:25:12.1780974Z",
     "source_folder": "<AllodsWorkspace>/адоны",
     "purpose": "Searchable inventory and source snapshot of current addon PAK files. Text sources are embedded; binary resources remain authoritative in the original PAK files.",
     "package_count": 9,
@@ -24,7 +24,7 @@
       "package_file": "ChatGPT_AllodsMover_v19.pak",
       "source_path": "<AllodsWorkspace>/адоны/ChatGPT_AllodsMover_v19.pak",
       "size_bytes": 84237,
-      "last_modified": "2026-06-17T17:37:25.0700000Z",
+      "last_modified": "2026-06-16T21:00:29.5390000Z",
       "sha256": "a6ce3c2621be2acb9fa4a847d5a785d63a16aaa8281b73cd9214799955748a38",
       "archive_format": "zip-compatible .pak",
       "internal_addons": [
@@ -347,7 +347,7 @@
       "package_file": "ChatGPT_AutoRez_v15.pak",
       "source_path": "<AllodsWorkspace>/адоны/ChatGPT_AutoRez_v15.pak",
       "size_bytes": 2291,
-      "last_modified": "2026-06-17T17:37:24.8600000Z",
+      "last_modified": "2026-06-17T17:33:45.9330000Z",
       "sha256": "a51f944c1b8f98ef18efeddf741fb3d1ae7d7401bfd1b358293586e6ee855c6d",
       "archive_format": "zip-compatible .pak",
       "internal_addons": [
@@ -396,7 +396,7 @@
       "package_file": "ChatGPT_AutoSkipCutscenes_v7.pak",
       "source_path": "<AllodsWorkspace>/адоны/ChatGPT_AutoSkipCutscenes_v7.pak",
       "size_bytes": 2662,
-      "last_modified": "2026-06-17T17:37:24.9020000Z",
+      "last_modified": "2026-06-17T17:27:14.6080000Z",
       "sha256": "b11452415b771dd5084dbf131f257da8d0a4f99e25d4cfd4b08dd2df0999a482",
       "archive_format": "zip-compatible .pak",
       "internal_addons": [
@@ -494,7 +494,7 @@
       "package_file": "ChatGPT_BagAutomation_v9.pak",
       "source_path": "<AllodsWorkspace>/адоны/ChatGPT_BagAutomation_v9.pak",
       "size_bytes": 31765,
-      "last_modified": "2026-06-17T17:37:25.1620000Z",
+      "last_modified": "2026-06-17T17:11:11.8770000Z",
       "sha256": "e486ff8b39996ebb7553a2fe5be8f4fe42cc6aa5847d82d728f0945c0a4c0acf",
       "archive_format": "zip-compatible .pak",
       "internal_addons": [
@@ -603,7 +603,7 @@
       "package_file": "ChatGPT_Bank_v17.pak",
       "source_path": "<AllodsWorkspace>/адоны/ChatGPT_Bank_v17.pak",
       "size_bytes": 40052,
-      "last_modified": "2026-06-17T17:37:22.9760000Z",
+      "last_modified": "2026-06-13T21:06:32.0210000Z",
       "sha256": "c7412e69cb8a8a36d488735f0ae3b41240c04d3ac3c566e86ca1c39669ac9b1a",
       "archive_format": "zip-compatible .pak",
       "internal_addons": [
@@ -760,7 +760,7 @@
       "package_file": "ChatGPT_EZTarget_v1.12.pak",
       "source_path": "<AllodsWorkspace>/адоны/ChatGPT_EZTarget_v1.12.pak",
       "size_bytes": 380768,
-      "last_modified": "2026-06-17T17:37:24.7040000Z",
+      "last_modified": "2026-06-14T19:21:42.7550000Z",
       "sha256": "74a7a5a13de749ee898e665b2a43df36c577c96df07a25eed1163e20456ea783",
       "archive_format": "zip-compatible .pak",
       "internal_addons": [
@@ -7837,7 +7837,7 @@
       "package_file": "ChatGPT_LabCalendar_v13.pak",
       "source_path": "<AllodsWorkspace>/адоны/ChatGPT_LabCalendar_v13.pak",
       "size_bytes": 415505,
-      "last_modified": "2026-06-17T17:37:24.9370000Z",
+      "last_modified": "2026-06-14T18:14:27.7210000Z",
       "sha256": "86aac3d197d1a5e1f539aa5459791191266d6200d1b1071eb1fd9a4f24eec6dd",
       "archive_format": "zip-compatible .pak",
       "internal_addons": [
@@ -13378,7 +13378,7 @@
       "package_file": "ChatGPT_LabMap_v60.pak",
       "source_path": "<AllodsWorkspace>/адоны/ChatGPT_LabMap_v60.pak",
       "size_bytes": 1458163,
-      "last_modified": "2026-06-17T20:13:42.8930000Z",
+      "last_modified": "2026-06-16T23:29:52.8070000Z",
       "sha256": "f0c8eb2af274faabaec73fcf30349b7e551d179d3b2a967b72c2cb324c11dd65",
       "archive_format": "zip-compatible .pak",
       "internal_addons": [
@@ -18248,7 +18248,7 @@
       "package_file": "ChatGPT_WidgetTreeLogger_v1.pak",
       "source_path": "<AllodsWorkspace>/адоны/ChatGPT_WidgetTreeLogger_v1.pak",
       "size_bytes": 3856,
-      "last_modified": "2026-06-13T17:51:13.1900000Z",
+      "last_modified": "2026-06-13T17:50:21.2670000Z",
       "sha256": "894f643f33ea704abebc396bd29db8e710f62c6a4be74db17ab01956148e9b43",
       "archive_format": "zip-compatible .pak",
       "internal_addons": [

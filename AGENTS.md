@@ -19,15 +19,12 @@ reports. Use `v2\resolve-allods-workspace.ps1` when a script or agent needs to
 print the concrete path for the current machine.
 Source projects should live under `projects\<AddonName>`. Ready/current PAK
 files live under `адоны`.
-Human reconnaissance and investigation notes live under `notes/`; treat them as
-context, not generated truth.
 
 ## First Places To Check
 
 - Read `v2/README.txt` before changing documentation or addon inventories.
 - Use `v2/search-v2.ps1` for focused lookup instead of loading the large JSON
-  files directly. Its scopes cover `Api`, `Runtime`, `Examples`, `Addons`,
-  `History`, or `All`.
+  files directly.
 - Treat `адоны/*.pak` as the authoritative source for current addon package
   contents.
 - Treat `v2/allods_addons_knowledge.json` as a generated searchable snapshot
@@ -98,14 +95,12 @@ context, not generated truth.
   - `v2\build-addon-workflow.ps1` builds into `адоны`, updates v2 records, and
     checks freshness.
   - `v2\install-addon-pak.ps1` copies a chosen `.pak` into the game folder only
-    when explicitly requested.
+    when explicitly requested. Prefer `ALLODS_GAME_ADDONS_PATH` for the game
+    addon folder; the built-in `C:\VK Play\Аллоды Онлайн\data\Mods\Addons`
+    path is only a fallback.
 
 ## Game Paths
 
-- Prefer the `ALLODS_GAME_ADDONS_PATH` environment variable or an explicit
-  `-GameAddonsPath` argument when installing a PAK into the game.
-- Default local fallback game install: `C:\VK Play\Аллоды Онлайн`
-- Default local fallback addon folder:
-  `C:\VK Play\Аллоды Онлайн\data\Mods\Addons`
-- Default local fallback Lua addon log:
-  `C:\VK Play\Аллоды Онлайн\Personal\Logs\mods.txt`
+- Game install: `C:\VK Play\Аллоды Онлайн`
+- Game addon install folder: `C:\VK Play\Аллоды Онлайн\data\Mods\Addons`
+- Main Lua addon log: `C:\VK Play\Аллоды Онлайн\Personal\Logs\mods.txt`

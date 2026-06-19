@@ -1,19 +1,12 @@
-param(
-    [switch] $ReviewPack
-)
-
 $ErrorActionPreference = 'Stop'
 
 $workspaceRoot = Split-Path -Parent $PSScriptRoot
 $required = @(
     'AGENTS.md',
     'v2',
-    'адоны'
+    'адоны',
+    'ModdingDocuments'
 )
-
-if (-not $ReviewPack) {
-    $required += 'ModdingDocuments'
-}
 
 $missing = @(
     foreach ($item in $required) {
@@ -30,8 +23,7 @@ if ($missing.Count -gt 0) {
 
 [pscustomobject] [ordered]@{
     WorkspaceRoot = $workspaceRoot
-    IsReviewPack = [bool] $ReviewPack
     V2 = $PSScriptRoot
     Addons = Join-Path $workspaceRoot 'адоны'
-    ModdingDocuments = if ($ReviewPack) { $null } else { Join-Path $workspaceRoot 'ModdingDocuments' }
+    ModdingDocuments = Join-Path $workspaceRoot 'ModdingDocuments'
 }

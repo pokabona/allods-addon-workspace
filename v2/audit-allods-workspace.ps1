@@ -2,6 +2,7 @@ param(
     [int] $TopDuplicates = 20,
     [switch] $IncludeArchive,
     [switch] $IncludeModdingDocuments,
+    [switch] $IncludeGeneratedKnowledge,
     [switch] $Json
 )
 
@@ -11,11 +12,23 @@ $workspaceRoot = Split-Path -Parent $PSScriptRoot
 $logicalRoot = '<AllodsWorkspace>'
 
 $skipDirectories = @('.git')
+$skipFiles = @()
 if (-not $IncludeArchive) {
     $skipDirectories += '_archive'
 }
 if (-not $IncludeModdingDocuments) {
     $skipDirectories += 'ModdingDocuments'
+}
+if (-not $IncludeGeneratedKnowledge) {
+    $skipFiles += @(
+        'v2/allods_addons_knowledge.json',
+        'v2/allods_api_core.json',
+        'v2/allods_examples_samples.json',
+        'v2/allods_history_changelog.json',
+        'v2/allods_manifest_index.json',
+        'v2/allods_runtime_knowledge.json',
+        'v2/allods_search_index.jsonl'
+    )
 }
 
 $binaryExtensions = @(
@@ -40,6 +53,9 @@ function Should-SkipPath {
         if ($relative -eq $dir -or $relative.StartsWith("$dir/")) {
             return $true
         }
+    }
+    if ($skipFiles -contains $relative) {
+        return $true
     }
     return $false
 }
@@ -200,6 +216,7 @@ $summary = [pscustomobject] [ordered]@{
     logical_root = $logicalRoot
     included_archive = [bool] $IncludeArchive
     included_modding_documents = [bool] $IncludeModdingDocuments
+    included_generated_knowledge = [bool] $IncludeGeneratedKnowledge
     file_count = $fileRecords.Count
     total_bytes = ($fileRecords | Measure-Object size_bytes -Sum).Sum
     duplicate_group_count = @(
@@ -231,6 +248,7 @@ if ($Json) {
 Write-Host "Allods workspace audit"
 Write-Host "Root: $workspaceRoot"
 Write-Host "Files scanned: $($summary.file_count)"
+Write-Host "Generated knowledge included: $($summary.included_generated_knowledge)"
 Write-Host "Duplicate groups: $($summary.duplicate_group_count) (showing top $TopDuplicates)"
 Write-Host "Empty files: $($summary.empty_file_count)"
 Write-Host "Absolute path hits: $($summary.absolute_path_hit_count)"
